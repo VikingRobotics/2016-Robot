@@ -130,11 +130,34 @@ public class Shooter {
 	{
 		if(lifter.getEncPosition() > goalPos +2000)
 		{
-			speed = -.8;
+	
+			if (lifter.getEncPosition()> goalPos + 10000)
+			{
+				speed = .3;
+			}
+			else if(lifter.getEncPosition() > 30000)
+			{
+				speed = .5;
+			}
+			else 
+			{
+				speed = 1;
+			}
 		}
 		else if(lifter.getEncPosition() < goalPos -2000)
 		{
-			speed = .8;
+			if (lifter.getEncPosition()< goalPos + 10000)
+			{
+				speed = .3;
+			}
+			else if(lifter.getEncPosition() < 30000)
+			{
+				speed = .5;
+			}
+			else 
+			{
+				speed = 1;
+			}
 		}
 		else
 		{
