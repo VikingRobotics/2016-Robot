@@ -34,7 +34,8 @@ public class Drive {
 	//TODO: IMPLEMENT TALONS
 	public void moveForwardsAndBackwards()
 	{
-
+		double currentXPos = stick.getX();
+		double currentYPos = stick.getY();
 		if((stick.getX() > .2 || stick.getX()< -.2) || (stick.getY()>.2 || stick.getY() <-.2) || (stick.getZ()>.35 || stick.getZ() <-.35))
 		{
 		double pt1 = Math.pow(stick.getZ() ,3);
@@ -67,8 +68,33 @@ public class Drive {
 		{
 			fixedY= pt2y-.2;
 		}
-
-		drive.arcadeDrive(-fixedX-.3,-fixedY-.3);}
+		double finalXPos = 0;
+		double finalYPos=0;
+		if(-currentXPos > -fixedX-.3 )
+		{
+			finalXPos = (-fixedX-.3)/4;
+		}
+		else if(finalXPos == (-fixedX-.3)/4)
+		{
+			finalXPos = (-fixedX-.3)/2;
+		}
+		else
+		{
+			finalXPos = -fixedX-.3;
+		}
+		if(-currentYPos > -fixedY-.3 )
+		{
+			finalYPos = (-fixedY-.3)/4;
+		}
+		else if(finalYPos == (-fixedY-.3)/4)
+		{
+			finalYPos = (-fixedY-.3)/2;
+		}
+		else
+		{
+			finalYPos = -fixedY-.3;
+		}
+		drive.arcadeDrive(finalXPos,finalYPos);}
 	}
 	public void shift()
 	{
